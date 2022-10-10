@@ -6,6 +6,6 @@
 
 package big // import "github.com/cymertek/go-big"
 
-import "internal/cpu"
+import "golang.org/x/sys/cpu"
 
 var support_adx = cpu.X86.HasADX && cpu.X86.HasBMI2

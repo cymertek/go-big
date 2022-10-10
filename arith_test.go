@@ -6,14 +6,14 @@ package big // import "github.com/cymertek/go-big"
 
 import (
 	"fmt"
-	"internal/testenv"
 	"math/bits"
 	"math/rand"
 	"strings"
 	"testing"
 )
 
-var isRaceBuilder = strings.HasSuffix(testenv.Builder(), "-race")
+//var isRaceBuilder = strings.HasSuffix(testenv.Builder(), "-race")
+var isRaceBuilder = false
 
 type funVV func(z, x, y []Word) (c Word)
 type argVV struct {
