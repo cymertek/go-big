@@ -613,7 +613,7 @@ func (z *Float) SetInt(x *Int) *Float {
 // Prune sets x to only the decimal portion of value of z.
 // In oppose to Int(), which return the whole number portion.
 // If x is nil, the value of z will be changed instead.
-func (z *Float) Prune(x *Float) {
+func (z *Float) Prune(x *Float) *Float {
 	if debugFloat {
 		z.validate()
 	}
@@ -621,7 +621,7 @@ func (z *Float) Prune(x *Float) {
 	switch z.form {
 	case zero:
 		if x == nil {
-			return
+			return x
 		}
 		x.acc = Exact
 		x.form = zero
@@ -634,7 +634,7 @@ func (z *Float) Prune(x *Float) {
 			if x != nil {
 				x.Set(z)
 			}
-			return
+			return x
 		}
 		// x.exp > 0
 
@@ -679,7 +679,7 @@ func (z *Float) Prune(x *Float) {
 			x.acc = Exact
 			x.form = zero
 			x.neg = false
-			return
+			return x
 		}
 
 		// update the precision
@@ -699,6 +699,7 @@ func (z *Float) Prune(x *Float) {
 		x.neg = false
 		panic(ErrNaN{"prune called on a non-finite Float"})
 	}
+	return x
 }
 
 // SetRat sets z to the (possibly rounded) value of x and returns z.
