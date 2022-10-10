@@ -17,7 +17,7 @@ import (
 	"math/bits"
 )
 
-const debugFloat = true // enable for debugging
+const debugFloat = false // enable for debugging
 
 // A nonzero finite Float represents a multi-precision floating point number
 //

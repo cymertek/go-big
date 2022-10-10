@@ -140,7 +140,6 @@ func (z *Float) Bytes() (integer, decimal []byte) {
 		b := make([]byte, len(m)*_W/8+1)
 		var i int
 
-		//fmt.Println("exp:", exp, uint32(exp)%8)
 		// align on the byte
 		if s := uint32(exp) % 8; s != 0 {
 			val := shlVU(m, z.mant, uint(s))
@@ -152,7 +151,6 @@ func (z *Float) Bytes() (integer, decimal []byte) {
 
 		// integer portion of the mantisa
 		for j := len(m) - 1; j >= 0; j-- {
-			//fmt.Println("i=", i, "j=", j, _W)
 			switch _W {
 			case 64:
 				binary.BigEndian.PutUint64(b[i:i+_W/8], uint64(m[j]))
@@ -191,8 +189,11 @@ func (z *Float) SetBytes(integer, decimal []byte) *Float {
 	z.prec = uint32(idLen * 8)
 
 	// allocate slices
-	m := make([]Word, words)
 	b := make([]byte, words*_W/8)
+	if words < 2 {
+		words = 2
+	}
+	m := make([]Word, words)
 
 	// fill the source slice
 	intSize := copy(b, integer)
@@ -213,7 +214,7 @@ func (z *Float) SetBytes(integer, decimal []byte) *Float {
 	}
 
 	// build the word slice
-	for i, j := len(m)-1, 0; i > 0; i, j = i-1, j+8 {
+	for i, j := len(m)-1, 0; j < len(b); i, j = i-1, j+8 {
 		switch _W {
 		case 64:
 			m[i] = Word(binary.BigEndian.Uint64(b[j : j+8]))
