@@ -184,7 +184,7 @@ func (z *Float) Bytes() (integer, decimal []byte) {
 //
 // Note: Only finite and zero values can be converted.  With this conversion
 // method, the precision, accuracy and negative sign are not maintaioned.
-func (z *Float) SetBytes(integer, decimal []byte) {
+func (z *Float) SetBytes(integer, decimal []byte) *Float {
 	// calculate the sizes
 	idLen := len(integer) + len(decimal)
 	words := (idLen*8-1)/_W + 1
@@ -209,7 +209,7 @@ func (z *Float) SetBytes(integer, decimal []byte) {
 	if firstbit == -1 {
 		z.acc = Exact
 		z.form = zero
-		return
+		return z
 	}
 
 	// build the word slice
@@ -226,4 +226,5 @@ func (z *Float) SetBytes(integer, decimal []byte) {
 	z.exp = int32(intSize*8 - firstbit)
 	z.form = finite
 	z.mant = m
+	return z
 }
