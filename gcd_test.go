@@ -5,7 +5,7 @@
 // This file implements a GCD benchmark.
 // Usage: go test math/big -test.bench GCD
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"math/rand"

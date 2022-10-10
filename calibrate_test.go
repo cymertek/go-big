@@ -17,7 +17,7 @@
 
 // Usage: go test -run=TestCalibrate -v -calibrate
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"flag"

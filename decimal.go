@@ -17,7 +17,7 @@
 // In contrast to strconv/decimal.go, only right shift is implemented in
 // decimal format - left shift can be done precisely in binary format.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 // A decimal represents an unsigned floating-point number in decimal representation.
 // The value of a non-zero decimal d is d.mant * 10**d.exp with 0.1 <= d.mant < 1,

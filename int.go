@@ -4,7 +4,7 @@
 
 // This file implements signed multi-precision integers.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"fmt"

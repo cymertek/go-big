@@ -4,7 +4,7 @@
 
 // +build math_big_pure_go
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 func mulWW(x, y Word) (z1, z0 Word) {
 	return mulWW_g(x, y)

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"bytes"
@@ -269,7 +269,6 @@ func TestFloatBytes(t *testing.T) {
 		a, b := x.Bytes()
 
 		i, _ := x.Int(nil)
-		fmt.Println("float:", test.x, a, i.Bytes())
 
 		y := new(Float)
 		y.SetBytes(a, b)

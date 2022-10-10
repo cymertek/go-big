@@ -4,7 +4,7 @@
 
 // +build !math_big_pure_go
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import "internal/cpu"
 

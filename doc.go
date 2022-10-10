@@ -96,4 +96,4 @@ Finally, *Int, *Rat, and *Float satisfy the fmt package's Scanner interface
 for scanning and (except for *Rat) the Formatter interface for formatted
 printing.
 */
-package big
+package big // import "github.com/cymertek/go-big"

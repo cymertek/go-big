@@ -4,7 +4,7 @@
 
 // This file implements encoding/decoding of Ints.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"bytes"

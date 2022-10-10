@@ -6,7 +6,7 @@
 // It is closely following the corresponding implementation
 // in strconv/ftoa.go, but modified and simplified for Float.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"bytes"

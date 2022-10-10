@@ -6,7 +6,7 @@
 // via an independent (albeit slower) representations for floating-point
 // numbers.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"fmt"

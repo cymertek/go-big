@@ -4,7 +4,7 @@
 
 // This file implements string-to-Float conversion functions.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"fmt"

@@ -9,7 +9,7 @@
 // rounding mode of the result operand determines the rounding
 // mode of an operation. This is a from-scratch implementation.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"fmt"

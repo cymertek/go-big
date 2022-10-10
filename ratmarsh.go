@@ -4,7 +4,7 @@
 
 // This file implements encoding/decoding of Rats.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"encoding/binary"

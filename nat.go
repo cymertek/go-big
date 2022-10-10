@@ -11,7 +11,7 @@
 //          changed (no 3-operand slice expressions). If that
 //          changes, alias needs to be updated for correctness.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"encoding/binary"

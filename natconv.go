@@ -4,7 +4,7 @@
 
 // This file implements nat-to-string conversion functions.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"errors"

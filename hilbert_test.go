@@ -6,7 +6,7 @@
 // Computes a Hilbert matrix, its inverse, multiplies them
 // and verifies that the product is the identity matrix.
 
-package big
+package big // import "github.com/cymertek/go-big"
 
 import (
 	"fmt"
