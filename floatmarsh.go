@@ -120,10 +120,18 @@ func (z *Float) UnmarshalText(text []byte) error {
 	return err
 }
 
-// Bytes returns two byte slices with the contents of the Float value mantissa
-// in BigEndian order.  The first byte slice is the same as converting the
-// Float to an Integer, Int(), and then Bytes() to get the byte slice, while
-// the second is the fractional portion of the float.
+// Bytes returns a byte slice of the Float mantissa cut into two with the
+// contents of the integer portion in the first and the contents of the decimal
+// in the second.  The mantissa bytes are in BigEndian order.  The first byte
+// slice is the same as converting the Float to an Integer, Int(), and then
+// Bytes() to get the byte slice, while the second is the fractional portion of
+// the float.
+//
+// The intended purpose of making this byte slice available is for doing binary
+// manipulation of the mantissa without having to encode/decode into
+// intermediary formats.  The full mantissa is encapsulated in the returned
+// byte slice (with any additional zero padding) so one needs to be aware that
+// the actual precision of the Float is not representative of the slice size.
 //
 // Note: Only finite and zero values can be converted.  With this conversion
 // method, the precision, accuracy and negative sign are not maintaioned.
@@ -164,10 +172,15 @@ func (z *Float) Bytes() (integer, decimal []byte) {
 		if prec := uint(z.prec+7)/8 + (uint(exp%8)+7)/8; int(prec) < len(b) {
 			b = b[:prec]
 		}
-		dec := (exp + 7) / 8
-		if exp < 0 {
+		if exp <= 0 {
+			// When |z| < 1
 			b = append(make([]byte, -exp/8), b...)
-			dec = 0
+			return b[:0], b
+		}
+		// When |z| >= 1, split into two parts using the dec mark
+		dec := (exp + 7) / 8
+		if int(dec) > len(b) {
+			b = append(b, make([]byte, int(dec)-len(b))...)
 		}
 		return b[:dec], b[dec:]
 	default:
