@@ -610,10 +610,10 @@ func (z *Float) SetInt(x *Int) *Float {
 	return z
 }
 
-// Prune sets x to only the decimal portion of value of z.
+// Mod1 sets x to only the decimal portion of value of z.
 // In oppose to Int(), which return the whole number portion.
 // If x is nil, the value of z will be changed instead.
-func (z *Float) Prune(x *Float) *Float {
+func (z *Float) Mod1(x *Float) *Float {
 	if debugFloat {
 		z.validate()
 	}

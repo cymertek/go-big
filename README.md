@@ -10,4 +10,4 @@ Documentation: https://pkg.go.dev/github.com/cymertek/go-big
 
 1. Bytes() and SetBytes() - Ability to work with the mantissa directly as a []byte slice
 
-2. Prune() - The opposite of Int(), in which only the decimal portion of the Float is maintained.
+2. Mod1() - The opposite of Int(), in which only the decimal portion of the Float is maintained.

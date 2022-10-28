@@ -187,7 +187,7 @@ func TestFloatSign(t *testing.T) {
 	}
 }
 
-func TestFloatPrune(t *testing.T) {
+func TestFloatMod1(t *testing.T) {
 	for _, test := range []struct {
 		x string
 		s float64
@@ -206,10 +206,10 @@ func TestFloatPrune(t *testing.T) {
 	} {
 		x := makeFloat(test.x)
 		y := new(Float)
-		x.Prune(y)
+		x.Mod1(y)
 		f, _ := y.Float64()
 		if f != test.s {
-			t.Errorf("%s.Prune() = %v; want %v", test.x, x, test.s)
+			t.Errorf("%s.Mod1() = %v; want %v", test.x, x, test.s)
 		}
 	}
 }
